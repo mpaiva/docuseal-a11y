@@ -104,6 +104,8 @@
   >
     <h2
       id="form-step-heading"
+      ref="stepHeading"
+      tabindex="-1"
       class="font-bold"
       aria-live="polite"
       aria-atomic="true"
@@ -1446,8 +1448,8 @@ export default {
             })
           }
 
+          this.$refs.stepHeading?.focus()
           this.enableScrollIntoField = false
-          this.$refs.form.querySelector('input[type="date"], input[type="number"], input[type="text"], select')?.focus()
           this.enableScrollIntoField = true
 
           if (clickUpload && !this.values[this.currentField.uuid] && ['file', 'image'].includes(this.currentField.type)) {
