@@ -571,8 +571,8 @@
             @click="isCompleted ? undefined : [saveStep(), goToStep(index, true)]"
           >
             <span
-              class="block h-3 w-3 rounded-full border border-base-content/50"
-              :class="{ 'bg-[#2563eb] !border-[#2563eb] steps-progress-current': index === currentStep, 'bg-base-content !border-base-content': (index < currentStep && stepFields[index].every((f) => !f.required || ![null, undefined, ''].includes(values[f.uuid]))) || isCompleted }"
+              class="block rounded-full border border-base-content/50"
+              :class="{ 'h-6 w-6 bg-[#2563eb] !border-[#2563eb] steps-progress-current': index === currentStep, 'h-3 w-3 bg-base-content !border-base-content': (index < currentStep && stepFields[index].every((f) => !f.required || ![null, undefined, ''].includes(values[f.uuid]))) || isCompleted, 'h-3 w-3': index > currentStep }"
             />
           </button>
         </div>
