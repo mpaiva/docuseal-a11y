@@ -104,7 +104,7 @@
   >
     <h2
       id="form-step-heading"
-      class="sr-only"
+      class="text-sm font-medium text-gray-600 mb-2"
       aria-live="polite"
       aria-atomic="true"
     >{{ stepHeading }}</h2>
