@@ -565,14 +565,14 @@
             v-for="(step, index) in stepFields"
             :key="step[0].uuid"
             type="button"
-            class="inline-flex items-center justify-center h-6 w-6 rounded-full mx-0.5 mt-0.5 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1"
+            class="inline-flex items-center justify-center h-6 w-6 rounded-full mx-0.5 mt-0.5 focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:ring-offset-1"
             :aria-label="stepAriaLabel(index)"
             :aria-current="index === currentStep ? 'step' : undefined"
             @click="isCompleted ? undefined : [saveStep(), goToStep(index, true)]"
           >
             <span
               class="block h-3 w-3 rounded-full border border-base-content/50"
-              :class="{ 'bg-primary !border-primary steps-progress-current': index === currentStep, 'bg-base-content !border-base-content': (index < currentStep && stepFields[index].every((f) => !f.required || ![null, undefined, ''].includes(values[f.uuid]))) || isCompleted }"
+              :class="{ 'bg-[#2563eb] !border-[#2563eb] steps-progress-current': index === currentStep, 'bg-base-content !border-base-content': (index < currentStep && stepFields[index].every((f) => !f.required || ![null, undefined, ''].includes(values[f.uuid]))) || isCompleted }"
             />
           </button>
         </div>
