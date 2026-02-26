@@ -565,12 +565,16 @@
             v-for="(step, index) in stepFields"
             :key="step[0].uuid"
             type="button"
-            class="inline border border-base-300 h-3 w-3 rounded-full mx-1 mt-1"
-            :class="{ 'bg-base-300 steps-progress-current': index === currentStep, 'bg-base-content': (index < currentStep && stepFields[index].every((f) => !f.required || ![null, undefined, ''].includes(values[f.uuid]))) || isCompleted, 'bg-white': index > currentStep }"
-            :aria-label="`${t('step')} ${index + 1} ${t('of')} ${stepFields.length}`"
+            class="inline-flex items-center justify-center h-6 w-6 rounded-full mx-0.5 mt-0.5 focus:outline-none focus:ring-2 focus:ring-base-content focus:ring-offset-1"
+            :aria-label="stepAriaLabel(index)"
             :aria-current="index === currentStep ? 'step' : undefined"
             @click="isCompleted ? undefined : [saveStep(), goToStep(index, true)]"
-          />
+          >
+            <span
+              class="block h-3 w-3 rounded-full border border-base-content/50"
+              :class="{ 'bg-base-300 !border-base-300 steps-progress-current': index === currentStep, 'bg-base-content !border-base-content': (index < currentStep && stepFields[index].every((f) => !f.required || ![null, undefined, ''].includes(values[f.uuid]))) || isCompleted }"
+            />
+          </button>
         </div>
       </div>
       <div
@@ -1234,6 +1238,11 @@ export default {
   methods: {
     t (key) {
       return this.i18n[key] || i18n[this.language?.toLowerCase()]?.[key] || i18n[this.browserLanguage]?.[key] || i18n.en[key] || key
+    },
+    stepAriaLabel (index) {
+      const base = `${this.t('step')} ${index + 1} ${this.t('of')} ${this.stepFields.length}`
+      const isComplete = this.isCompleted || (index < this.currentStep && this.stepFields[index].every((f) => !f.required || ![null, undefined, ''].includes(this.values[f.uuid])))
+      return isComplete ? `${base}, ${this.t('completed')}` : base
     },
     onOrientationChange (event) {
       this.orientation = event.target.type

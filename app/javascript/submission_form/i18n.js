@@ -106,6 +106,7 @@ const en = {
   step: 'Step',
   of: 'of',
   form_progress: 'Form progress',
+  completed: 'completed',
   country_code: 'Country code'
 }
 
