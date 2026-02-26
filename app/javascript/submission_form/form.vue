@@ -95,11 +95,19 @@
   <div
     v-show="isFormVisible"
     id="form_container"
+    role="region"
+    aria-labelledby="form-step-heading"
     class="shadow-md bg-base-100 absolute bottom-0 w-full border-base-200 border p-4 rounded form-container overflow-hidden"
     :class="{ 'md:bottom-4': isBreakpointMd }"
     :style="{ backgroundColor: backgroundColor }"
     :aria-hidden="!isFormVisible"
   >
+    <h2
+      id="form-step-heading"
+      class="sr-only"
+      aria-live="polite"
+      aria-atomic="true"
+    >{{ stepHeading }}</h2>
     <button
       v-if="!isCompleted"
       id="minimize_form_button"
@@ -995,6 +1003,13 @@ export default {
     },
     currentStepFields () {
       return this.stepFields[this.currentStep] || []
+    },
+    stepHeading () {
+      const field = this.currentField
+      const base = `${this.t('step')} ${this.currentStep + 1} ${this.t('of')} ${this.stepFields.length}`
+      if (!field) return base
+      const fieldName = field.title || field.name || this.t(field.type) || ''
+      return fieldName ? `${base}: ${fieldName}` : base
     },
     browserLanguage () {
       return (navigator.language || navigator.userLanguage || 'en').split('-')[0]
