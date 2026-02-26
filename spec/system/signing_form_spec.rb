@@ -601,19 +601,16 @@ RSpec.describe 'Signing Form' do
 
       find('#expand_form_button').click
       page.find('canvas').click([], { x: 150, y: 100 })
+      click_button 'Sign and Complete'
 
-      alert_text = page.accept_alert do
-        click_button 'Sign and Complete'
-      end
-
-      expect(alert_text).to eq 'Signature is too small or simple. Please redraw.'
+      expect(page).to have_content('Signature is too small or simple. Please redraw.')
     end
 
     it 'completes the form if the canvas is typed' do
       visit submit_form_path(slug: submitter.slug)
 
       find('#expand_form_button').click
-      click_link 'Type'
+      click_button 'Type'
       fill_in 'signature_text_input', with: 'John Doe'
       click_button 'Sign and Complete'
 
@@ -724,7 +721,7 @@ RSpec.describe 'Signing Form' do
       visit submit_form_path(slug: submitter.slug)
 
       find('#expand_form_button').click
-      click_link 'Draw'
+      click_button 'Draw'
       draw_canvas
       click_button 'Complete'
 
