@@ -117,9 +117,10 @@
       <% if has_full_text %>
           </div>
           <div id="panel-text" role="tabpanel" aria-labelledby="tab-text" tabindex="0" hidden>
-            <p class="text-sm text-base-content/60 p-4 border-b border-base-300">
+            <div role="note" class="flex items-start gap-3 m-4 p-3 rounded-lg bg-blue-50 border border-blue-200 text-blue-800 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="flex-none mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
               <%= t('text_view_disclaimer') %> <%= t('signing_fields_below') %>
-            </p>
+            </div>
             <article class="prose max-w-none px-4 py-2">
               <% schema.each do |item| %>
                 <% doc = @submitter.submission.schema_documents.find { |a| a.uuid == item['attachment_uuid'] } %>
