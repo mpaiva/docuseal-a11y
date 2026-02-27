@@ -377,6 +377,7 @@ en: &en
   download_options: "Download options"
   text_view_disclaimer: "Text provided for accessibility. The PDF view is the authoritative document."
   signing_fields_below: "Your signing fields are in the panel below."
+  pdf_page_text_view_hint: "To read the text content of this page, use the Text View tab."
   powered_by: Powered by
   count_documents_signed_with_html: '<b>%{count}</b> documents signed with'
   storage: Storage
