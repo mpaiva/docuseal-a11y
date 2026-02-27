@@ -8,7 +8,7 @@
     <label
       :for="inputId"
       tabindex="0"
-      class="w-full relative bg-base-300 hover:bg-base-200 rounded-md border border-base-content border-dashed file-dropzone focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+      class="w-full relative bg-base-300 hover:bg-base-200 rounded-md border border-base-content border-dashed file-dropzone focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2563eb]"
       :class="{ 'opacity-50': isLoading }"
       @keydown.enter.prevent="$refs.input.click()"
       @keydown.space.prevent="$refs.input.click()"
