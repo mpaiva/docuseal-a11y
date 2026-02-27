@@ -7,8 +7,11 @@
   >
     <label
       :for="inputId"
-      class="w-full relative bg-base-300 hover:bg-base-200 rounded-md border border-base-content border-dashed file-dropzone"
+      tabindex="0"
+      class="w-full relative bg-base-300 hover:bg-base-200 rounded-md border border-base-content border-dashed file-dropzone focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
       :class="{ 'opacity-50': isLoading }"
+      @keydown.enter.prevent="$refs.input.click()"
+      @keydown.space.prevent="$refs.input.click()"
     >
       <div class="absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center">
         <div class="flex flex-col items-center">
